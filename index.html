@@ -134,10 +134,7 @@
     <!-- SCRIPT FOR PREVIEW BUTTON -->
     <script src="previewBtn.js"></script>
 
-    <!-- SCRIPT FOR DOWNLOAD BUTTON 
-    
-      , { allowTaint: true, foreignObjectRendering: true}
-    -->
+    <!-- SCRIPT FOR DOWNLOAD BUTTON -->
     <script>   
           function downloadImage() {
                 
@@ -156,34 +153,6 @@
                 link.click();
             });
           }
-
-          /*          
-          $(document).ready(function () {
-          $("#btn-convert").on("click", function () {
-          result.style.backgroundColor = "#2d2d2d";
-          const getCanvas = document.querySelector("#result");
-
-          html2canvas(getCanvas).then((canvas) => {           
-            // $("#previewImage").empty(); 
-            // Using append, will make the "new" div visible, after pressing download button
-             $("#previewImage").empty().append(canvas);
-            let imageData = canvas.toDataURL("image/png");
-
-            // Now browser starts downloading
-            // it instead of just showing it
-            let newData = imageData.replace(
-              /^data:image\/png/,
-              "data:application/octet-stream"
-            );
-
-            $("#btn-convert")
-              .attr("download", "Achievement.png")
-              .attr("href", newData);
-              });
-            });
-          });
-      
-      */
     </script>
   </body>
 </html>
