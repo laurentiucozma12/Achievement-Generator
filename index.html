@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/achievement.png" />
+    <title>Achievement Generator</title>
+
+    <!-- SCRIPTS -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/html2canvas.js"></script>
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <h1>Achievement Generator</h1>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="c">
+      <div class="main">
+        <div class="border">
+          <form>
+            <h3 id="fillForm" class="flex">Please fill the form</h3>
+            <br />
+
+            <label class="flex">Title</label>
+            <div class="flex">
+              <input
+                class = "input"
+                type="text"
+                id="inTitle"
+                placeholder="Give a title to your achievement"
+                maxlength="100"
+              />
+            </div>
+            <br />
+
+            <label class="flex">Description</label>
+            <div class="flex">
+              <input
+                class = "input"
+                type="text"
+                id="inDescription"
+                maxlength="500"
+                placeholder="Describe your achievement"
+              />
+            </div>
+            <br />
+
+            <label class="flex">Reward (optionally)</label>
+            <div class="flex">
+              <input                
+                class = "input"
+                type="text"
+                id="inReward"
+                placeholder="What reward do you get for completing it?"
+              />
+            </div>
+            <br />
+
+            <label class="flex marginBot"
+              >Choose an image for your achievement:</label
+            >
+            <div class="flex">
+              <div class="flex marginBot shadowBox upButton">
+                <label for="file" class="upload">Upload your image</label>
+              </div>
+            </div>
+
+            <div class="flex">
+              <input
+                type="file"
+                id="file"
+                accept="image/*"
+                onchange="loadImage(event)"
+              />
+            </div>
+          </form>
+
+          <div class="flex">
+            <a type="submit" id="preview" class="shadowBox">Preview</a>
+          </div>
+        </div>
+
+        <div class="achievement flex">
+          <h4>Achievement</h4>
+        </div>
+
+        <!-- Sub section of main, here it is the achivement card 
+        ################## RESULT ############################# -->
+        <div id="result" class="content border container">
+          <div class="centerImg">
+            <img src="" id="imgDisplayed" class="imgRight" />
+          </div>
+
+          <div>
+            <ul>
+              <li id="title"></li>
+              <li id="description"></li>
+              <li id="reward"></li>
+            </ul>
+          </div>
+
+          <div>
+            <header id="head">
+              <img src="images/achievement.png" id="logo" class="logoSize" />
+            </header>
+          </div>
+        </div>
+        <!-- ################ END OF RESULT ##################### --> 
+
+        <div class="flex">
+          <a id="btn-convert" class="shadowBox marginTop">
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="flex">
+      <p>© Copyright of Lau</p>
+    </footer>
+
+    <!-- SCRIPT FOR PREVIEW BUTTON -->
+    <script src="previewBtn.js"></script>
+
+    <!-- SCRIPT FOR DOWNLOAD BUTTON -->
+    <script>
+      $(document).ready(function () {
+        $("#btn-convert").on("click", function () {
+          const result = document.getElementById("result");
+          result.style.backgroundColor = "#2d2d2d";
+
+          html2canvas(result).then((canvas) => { 
+            let imageData = canvas.toDataURL("image/png");
+
+            // Now browser starts downloading
+            // it instead of just showing it
+            let newData = imageData.replace(
+              /^data:image\/png/,
+              "data:application/octet-stream"
+            );
+
+            $("#btn-convert")
+              .attr("download", "Achievement.png")
+              .attr("href", newData);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
