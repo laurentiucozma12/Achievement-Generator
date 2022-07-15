@@ -38,6 +38,7 @@
                 id="inTitle"
                 placeholder="Give a title to your achievement"
                 maxlength="100"
+                value="Destroyer of the World"
               />
             </div>
             <br />
@@ -50,6 +51,7 @@
                 id="inDescription"
                 maxlength="500"
                 placeholder="Describe your achievement"
+                value="You destroyed the world"
               />
             </div>
             <br />
@@ -61,6 +63,7 @@
                 type="text"
                 id="inReward"
                 placeholder="What reward do you get for completing it?"
+                value="god powers"
               />
             </div>
             <br />
@@ -114,10 +117,10 @@
             </header>
           </div>
         </div>
-        <!-- ################ END OF RESULT ##################### --> 
+        <!-- ################ END OF RESULT ##################### onclick="downloadImage()" --> 
 
         <div class="flex">
-          <a id="btn-convert" class="shadowBox marginTop">
+          <a id="btn-convert" class="shadowBox marginTop" >
             Download
           </a>
         </div>
@@ -131,14 +134,39 @@
     <!-- SCRIPT FOR PREVIEW BUTTON -->
     <script src="previewBtn.js"></script>
 
-    <!-- SCRIPT FOR DOWNLOAD BUTTON -->
-    <script>
-      $(document).ready(function () {
-        $("#btn-convert").on("click", function () {
-          const result = document.getElementById("result");
-          result.style.backgroundColor = "#2d2d2d";
+    <!-- SCRIPT FOR DOWNLOAD BUTTON 
+    
+      , { allowTaint: true, foreignObjectRendering: true}
+    -->
+    <script>   
+          function downloadImage() {
+                
+            var container = document.getElementById("result");        
+            container.style.backgroundColor = "#2d2d2d";
+            html2canvas(container).then(function (canvas) {
+                var link = document.createElement("a");
+                link.style.opacity = "0";
+                link.style.position = "absolute";
+                link.style.bottom = "100px";
+                
+                document.body.appendChild(link);
+                link.download = "Achievement.png";
+                link.href = canvas.toDataURL();
+                link.target = '_blank';
+                link.click();
+            });
+          }
 
-          html2canvas(result).then((canvas) => { 
+          /*          
+          $(document).ready(function () {
+          $("#btn-convert").on("click", function () {
+          result.style.backgroundColor = "#2d2d2d";
+          const getCanvas = document.querySelector("#result");
+
+          html2canvas(getCanvas).then((canvas) => {           
+            // $("#previewImage").empty(); 
+            // Using append, will make the "new" div visible, after pressing download button
+             $("#previewImage").empty().append(canvas);
             let imageData = canvas.toDataURL("image/png");
 
             // Now browser starts downloading
@@ -151,9 +179,11 @@
             $("#btn-convert")
               .attr("download", "Achievement.png")
               .attr("href", newData);
+              });
+            });
           });
-        });
-      });
+      
+      */
     </script>
   </body>
 </html>
