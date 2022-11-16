@@ -7,4 +7,4 @@ Please open the project with VS code and it should work fine.
 ## Example
 ![dashboard_desktop2](https://github.com/laurentiucozma12/Achievement-Generator/blob/main/projectPreview/dashboard_desktop2.png)  
 ## The file you download
-![achievement](https://github.com/laurentiucozma12/Achievement-Generator/tree/main/projectPreview)
+![achievement](https://github.com/laurentiucozma12/Achievement-Generator/blob/main/projectPreview/achievement.png)
