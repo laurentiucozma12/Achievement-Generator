@@ -1,4 +1,4 @@
-# Achievement-Generator-Simple-Version
+# Achievement Generator
 This WebSite helps you create your desired achievements, and download it as a png file.
 Please open the project with VS code and it should work fine.
 # Achievement Generator Preview
@@ -7,4 +7,4 @@ Please open the project with VS code and it should work fine.
 ## Example
 ![dashboard_desktop2](https://github.com/laurentiucozma12/Achievement-Generator/blob/master/projectPreview/dashboard_desktop2.png)  
 ## The file you download
-![dashboard_desktop](https://github.com/laurentiucozma12/Achievement-Generator/blob/master/projectPreview/achievement.png)     
+![dashboard_desktop2](https://github.com/laurentiucozma12/Achievement-Generator/blob/master/projectPreview/achievement.png)
